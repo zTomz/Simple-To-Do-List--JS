@@ -14,8 +14,13 @@ function buildList(key) {
     let newItem = document.createElement("li");
     newItem.appendChild(document.createTextNode(key));
     newItem.setAttribute("class", "list-item");
-    newItem.addEventListener("longpress", function() {
-        newItem.remove();
+    newItem.addEventListener("click", function() {
+        let state = newItem.getAttribute("value");
+        if(state === "done") {
+            newItem.setAttribute("value", "");
+            return;
+        }
+        newItem.setAttribute("value", "done");
     });
 
     todoList.appendChild(newItem);
